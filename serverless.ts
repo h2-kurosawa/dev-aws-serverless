@@ -22,6 +22,21 @@ const serverlessConfiguration: AWS = {
 	},
 	// import the function via paths
 	functions: { hello, goodbye },
+	// add resource
+	resources: {
+		Resources: {
+			// add Queue
+			MyQueue: {
+				Type: 'AWS::SQS::Queue',
+				Properties: {
+					QueueName: 'dev-aws-serverless-goodbye.fifo',
+					FifoQueue: true,
+					MessageRetentionPeriod: 300, //SQSのメッセージ保持時間(秒)
+					ReceiveMessageWaitTimeSeconds: 5, //ポーリング待機時間
+				},
+			},
+		},
+	},
 	package: { individually: true },
 	custom: {
 		esbuild: {
