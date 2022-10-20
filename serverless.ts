@@ -29,8 +29,9 @@ const serverlessConfiguration: AWS = {
 			MyQueue: {
 				Type: 'AWS::SQS::Queue',
 				Properties: {
-					QueueName: 'dev-aws-serverless-goodbye.fifo',
-					FifoQueue: true,
+					QueueName: 'dev-aws-serverless-goodbye',
+					// QueueName: 'dev-aws-serverless-goodbye.fifo',
+					// FifoQueue: true,
 					MessageRetentionPeriod: 300, //SQSのメッセージ保持時間(秒)
 					ReceiveMessageWaitTimeSeconds: 5, //ポーリング待機時間
 				},
