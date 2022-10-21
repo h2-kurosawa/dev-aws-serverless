@@ -16,16 +16,19 @@ const goodbye: SQSHandler = async (event, _c) => {
 	// })
 	//Queue→Lambda→Asteria
 	console.log('LambdaからQueue')
-	const command = new SendMessageCommand({
-		QueueUrl: `https://sqs.ap-northeast-1.amazonaws.com/882132717543/dev-aws-serverless-goodbye-asteria`,
-		MessageBody: 'Queue to Asteria',
-	})
-	try {
-		const result = await client.send(command)
-		console.log('result', result)
-	} catch (err) {
-		console.log(err)
-	}
+	console.log('destinationで実行')
+
+	// const command = new SendMessageCommand({
+	// 	QueueUrl: `https://sqs.ap-northeast-1.amazonaws.com/882132717543/dev-aws-serverless-goodbye-asteria`,
+	// 	MessageBody: 'Queue to Asteria',
+	// })
+	// try {
+	// 	const result = await client.send(command)
+	// 	console.log('result', result)
+	// } catch (err) {
+	// 	console.log(err)
+	// }
+	return
 }
 
 export const main = middyfy(goodbye)

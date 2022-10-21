@@ -21,7 +21,10 @@ const serverlessConfiguration: AWS = {
 		},
 	},
 	// import the function via paths
-	functions: { hello, goodbye },
+	functions: {
+		hello,
+		goodbye,
+	},
 	// add resource
 	resources: {
 		Resources: {
@@ -36,6 +39,19 @@ const serverlessConfiguration: AWS = {
 					ReceiveMessageWaitTimeSeconds: 5, //ポーリング待機時間
 				},
 			},
+			//非同期設定...ここか..？
+			// AsyncConfig: {
+			// 	Type: 'AWS::Lambda::EventInvokeConfig',
+			// 	Properties: {
+			// 		DestinationConfig: {
+			// 			OnSuccess: {
+			// 				Destination: {d
+			// 					QueueName: 'dev-aws-serverless-goodbye',
+			// 				},
+			// 			},
+			// 		},
+			// 	},
+			// },
 		},
 	},
 	package: { individually: true },
